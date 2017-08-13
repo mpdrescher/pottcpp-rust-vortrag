@@ -15,5 +15,12 @@ path = "src/pmap1.rs"
 name = "pmap2"
 path = "src/pmap2.rs"
 
+[[bin]]
+name = "pmap3"
+path = "src/pmap3.rs"
+
 [dependencies]
 rand = "*"
+futures = "0.1"
+futures-cpupool = "0.1"
+tokio-timer = "0.1"
