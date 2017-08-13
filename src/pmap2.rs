@@ -12,14 +12,16 @@ use std::thread::JoinHandle;
 use std::iter::Map;
 use std::slice::Chunks;
 use std::sync::Arc;
+use std::boxed::Box;
+use std::sync::Mutex;
 
 const THREADS: usize = 4;
 
 fn main() {
-    let mut data = generate_data(SETLEN);
+    let data = generate_data(SETLEN);
     println!("generiere {} testdaten", SETLEN);
     let earlier = SystemTime::now();
-    map_data(&mut data);
+    let _ = map_data(data);
     let dur = match SystemTime::now().duration_since(earlier) {
         Ok(v) => v,
         Err(e) => {
@@ -30,18 +32,16 @@ fn main() {
     println!("duration: {}.{} secs", dur.as_secs(), dur.subsec_nanos());
 }
 
-fn map_data(data: &mut Vec<f64>) {
-    let chunk_size = data.len() / THREADS + 1;
-    *data = {
-        data.chunks(chunk_size)
-            .map(|x| x.to_owned())
-            .map(|x| {
-                thread::spawn(move || {
-                    x.into_iter().map(|x| newton(x, NEWTON_ITER))
-                })
-            })
-            .map(|x| x.join().expect("failed to join"))
-            .flat_map(|x| x)
-            .collect::<Vec<f64>>()
+fn map_data(data: Vec<f64>) -> Vec<f64> {
+    let mut handles:Vec<JoinHandle<Vec<f64>>> = Vec::new();
+    let mut data: Vec<Arc<_>> = data.chunks(data.len()/THREADS + 1).
+                                        map(|x| Arc::new(x.to_owned())).collect();
+    for d in data {
+        handles.push(thread::spawn(move || d.iter().map(|x| newton(*x, NEWTON_ITER)).collect()));
     }
+    let mut ret = Vec::with_capacity(THREADS);
+    for handle in handles {
+        ret.push(handle.join().unwrap());
+    }
+    ret.into_iter().flat_map(|x| x).collect()
 }

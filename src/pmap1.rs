@@ -10,8 +10,8 @@ use std::time::SystemTime;
 use std::thread;
 
 fn main() {
-    let data = generate_data(SETLEN/10);
-    println!("generiere {} testdaten", SETLEN/10);
+    let data = generate_data(SETLEN);
+    println!("generiere {} testdaten", SETLEN);
     let earlier = SystemTime::now();
     let _new_data = map_data(data);
     let dur = match SystemTime::now().duration_since(earlier) {
