@@ -1,0 +1,19 @@
+[package]
+name = "cppvortrag"
+version = "0.1.0"
+authors = ["Matthias Drescher <matthias_p_drescher@t-online.de>"]
+
+[[bin]]
+name = "map"
+path = "src/map.rs"
+
+[[bin]]
+name = "pmap1"
+path = "src/pmap1.rs"
+
+[[bin]]
+name = "pmap2"
+path = "src/pmap2.rs"
+
+[dependencies]
+rand = "*"
