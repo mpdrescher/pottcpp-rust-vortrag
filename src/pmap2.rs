@@ -21,7 +21,7 @@ fn main() {
     let data = generate_data(SETLEN);
     println!("generiere {} testdaten", SETLEN);
     let earlier = SystemTime::now();
-    let _new_data = map_data(data);
+    let _ = map_data(data);
     let dur = match SystemTime::now().duration_since(earlier) {
         Ok(v) => v,
         Err(e) => {
