@@ -16,10 +16,10 @@ use std::sync::Arc;
 const THREADS: usize = 4;
 
 fn main() {
-    let data = generate_data(SETLEN/10);
-    println!("generiere {} testdaten", SETLEN/10);
+    let mut data = generate_data(SETLEN);
+    println!("generiere {} testdaten", SETLEN);
     let earlier = SystemTime::now();
-    let _new_data = map_data(data);
+    map_data(&mut data);
     let dur = match SystemTime::now().duration_since(earlier) {
         Ok(v) => v,
         Err(e) => {
@@ -30,23 +30,18 @@ fn main() {
     println!("duration: {}.{} secs", dur.as_secs(), dur.subsec_nanos());
 }
 
-fn map_data(data: Vec<f64>) -> Vec<f64> {
-    let chunklen = data.len() / THREADS + 1;
-    data.chunks(chunklen)
-        .map(|x: Chunks<&[f64]> | -> JoinHandle<Map<&[f64], Fn(&f64) -> f64>>{ //über slices
-            //für jeden slice einen thread spawnen, der über den slice iteriert, und newton darauf anwendet.
-            thread::spawn(move || x.map(|y| {
-                newton(*y, NEWTON_ITER)
-            })) //Rückgabewert: ThreadHandle<Map<f64>>
-        })
-        .map(|handle| handle.join().expect("failed to join"))
-        .flat_map(|x| x)
-        .collect()
+fn map_data(data: &mut Vec<f64>) {
+    let chunk_size = data.len() / THREADS + 1;
+    *data = {
+        data.chunks(chunk_size)
+            .map(|x| x.to_owned())
+            .map(|x| {
+                thread::spawn(move || {
+                    x.into_iter().map(|x| newton(x, NEWTON_ITER))
+                })
+            })
+            .map(|x| x.join().expect("failed to join"))
+            .flat_map(|x| x)
+            .collect::<Vec<f64>>()
+    }
 }
-
-/*fn map_data(data: Vec<f64>) -> Vec<f64> {
-    let chunklen = data.len() / THREADS + 1;
-    let chunks: Chunks<f64> = data.chunks(chunklen);
-    chunks.map(|x: &[f64]| x); 
-    vec!()
-}*/
