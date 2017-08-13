@@ -19,6 +19,10 @@ path = "src/pmap2.rs"
 name = "pmap3"
 path = "src/pmap3.rs"
 
+[[bin]]
+name = "pmap4"
+path = "src/pmap4.rs"
+
 [dependencies]
 rand = "*"
 futures = "0.1"
