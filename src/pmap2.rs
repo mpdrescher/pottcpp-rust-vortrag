@@ -36,7 +36,6 @@ fn map_data(data: Vec<f64>) -> Vec<f64> {
     let mut handles:Vec<JoinHandle<Vec<f64>>> = Vec::new();
     let mut data = data.chunks(data.len()/THREADS + 1).
                                         map(|x| Arc::new(x.to_owned()));
-    println!("{}", data.len());
     for d in data {
         handles.push(thread::spawn(move || d.iter().map(|x| newton(*x, NEWTON_ITER)).collect()));
     }
