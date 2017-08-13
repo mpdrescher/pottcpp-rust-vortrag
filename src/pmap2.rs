@@ -34,14 +34,11 @@ fn main() {
 
 fn map_data(data: Vec<f64>) -> Vec<f64> {
     let mut handles:Vec<JoinHandle<Vec<f64>>> = Vec::new();
-    let mut data: Vec<Arc<_>> = data.chunks(data.len()/THREADS + 1).
-                                        map(|x| Arc::new(x.to_owned())).collect();
+    let mut data = data.chunks(data.len()/THREADS + 1).
+                                        map(|x| Arc::new(x.to_owned()));
+    println!("{}", data.len());
     for d in data {
         handles.push(thread::spawn(move || d.iter().map(|x| newton(*x, NEWTON_ITER)).collect()));
     }
-    let mut ret = Vec::with_capacity(THREADS);
-    for handle in handles {
-        ret.push(handle.join().unwrap());
-    }
-    ret.into_iter().flat_map(|x| x).collect()
+    handles.into_iter().flat_map(|x| x.join().unwrap()).collect()
 }
