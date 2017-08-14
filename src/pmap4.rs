@@ -1,3 +1,4 @@
+extern crate testdata;
 extern crate futures;
 extern crate futures_cpupool;
 
@@ -7,18 +8,16 @@ use futures_cpupool::CpuPool;
 mod map;
 use map::map_data as original_map;
 
-mod testdata;
 use testdata::{
     newton,
     generate_data,
     NEWTON_ITER,
-    SETLEN
+    SETLEN,
+    THREADS
 };
 
 use std::time::SystemTime;
 use std::sync::Arc;
-
-const THREADS: usize = 8;
 
 fn main() {
     let pool = CpuPool::new_num_cpus();

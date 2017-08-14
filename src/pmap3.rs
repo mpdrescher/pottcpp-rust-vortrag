@@ -1,3 +1,4 @@
+extern crate testdata;
 extern crate futures;
 extern crate futures_cpupool;
 
@@ -7,7 +8,6 @@ use futures_cpupool::CpuPool;
 mod map;
 use map::map_data as original_map;
 
-mod testdata;
 use testdata::{
     newton,
     generate_data,

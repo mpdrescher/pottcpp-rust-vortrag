@@ -1,9 +1,10 @@
-mod testdata;
+extern crate testdata;
 use testdata::{
     newton,
     generate_data,
     NEWTON_ITER,
-    SETLEN
+    SETLEN,
+    THREADS
 };
 
 mod map;
@@ -15,8 +16,6 @@ use std::thread::{
     JoinHandle
 };
 use std::sync::Arc;
-
-const THREADS: usize = 4;
 
 fn main() {
     let mut data = generate_data(SETLEN);

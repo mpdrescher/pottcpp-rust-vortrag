@@ -3,6 +3,10 @@ name = "cppvortrag"
 version = "0.1.0"
 authors = ["Matthias Drescher <matthias_p_drescher@t-online.de>"]
 
+[lib]
+name = "testdata"
+path = "src/testdata.rs"
+
 [[bin]]
 name = "map"
 path = "src/map.rs"

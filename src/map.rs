@@ -1,3 +1,4 @@
+extern crate testdata;
 use testdata::{
     newton,
     generate_data,
