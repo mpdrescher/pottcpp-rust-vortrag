@@ -4,6 +4,9 @@ extern crate futures_cpupool;
 use futures::Future;
 use futures_cpupool::CpuPool;
 
+mod map;
+use map::map_data as original_map;
+
 mod testdata;
 use testdata::{
     newton,
@@ -16,18 +19,22 @@ use std::time::SystemTime;
 
 fn main() {
     let pool = CpuPool::new_num_cpus();
-    let data = generate_data(SETLEN);
-    println!("generiere {} testdaten", SETLEN);
+    let mut data = generate_data(SETLEN);
+    let data_copy = data.clone();
+    println!("Es wurden {} Testdaten generiert.", SETLEN);
     let earlier = SystemTime::now();
-    let _ = map_data(data, &pool);
+    data = map_data(data, &pool);
     let dur = match SystemTime::now().duration_since(earlier) {
         Ok(v) => v,
         Err(e) => {
-            println!("messfehler: {}", e);
+            println!("Messfehler: {}.", e);
             return;
         }
     };
-    println!("duration: {}.{} secs", dur.as_secs(), dur.subsec_nanos());
+    println!("Dauer: {}.{} secs", dur.as_secs(), dur.subsec_nanos());
+    println!("Prüfe auf Gleichheit...");
+    assert_eq!(original_map(data_copy), data);
+    println!("Die Ergebnisse sind gleich.");
 }
 
 fn map_data(data: Vec<f64>, pool: &CpuPool) -> Vec<f64> {
