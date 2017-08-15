@@ -36,4 +36,4 @@ Ausgabe:
 6
 ```
 
-[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/slides/ownership/ownership3.md)
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/ownership3.md)

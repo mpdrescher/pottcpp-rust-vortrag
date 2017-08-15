@@ -33,7 +33,7 @@ fn add_one(number: &mut usize) {
 
 ### Die goldene Regel:
 
-- Es kann mehrere unveränderliche Referenzen zu einer Sache geben, __*oder*__
+- Es kann mehrere unveränderliche Referenzen zu einem Objekt geben, __*oder*__
 - Genau eine veränderliche.
 
 ### Einfrieren:
@@ -50,3 +50,8 @@ fn main() {
     x += 1;
 }
 ```
+
+Das heisst auch, dass es nicht möglich ist ein Objekt out-of-scope gehen zu lassen,
+auf welches noch Referenzen zeigen.
+
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/ownership6.md)
