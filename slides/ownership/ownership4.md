@@ -12,7 +12,7 @@ fn message(string: String) {
 }
 ```
 <dl>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 </dl>
 
 Ausgabe:
@@ -50,6 +50,21 @@ Ausgabe:
 ```
 Hallo
 Hallo
+```
+
+### Schleifen werden berücksichtigt:
+
+```
+fn main() {
+    let mut ein_string = String::from("Hallo");
+    for _ in 0..2 {
+        message(ein_string);
+    }
+}
+
+fn message(string: String) {
+    println!("{}", string);
+}
 ```
 
 [Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/slides/ownership/ownership5.md)
