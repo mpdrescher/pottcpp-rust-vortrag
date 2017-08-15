@@ -30,4 +30,26 @@ error[E0382]: use of moved value: `ein_string`
 error: aborting due to previous error
 ```
 
+### Rückgabe von Objekten mit Ownership
+
+```Rust
+fn main() {
+    let mut ein_string = String::from("Hallo");
+    ein_string = message(ein_string);
+    //oder: let ein_neuer_string = message(ein_string);
+    println!("{}", ein_string);
+}
+
+fn message(string: String) -> String {
+    println!("{}", string);
+    string
+}
+```
+
+Ausgabe:
+```
+Hallo
+Hallo
+```
+
 [Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/slides/ownership/ownership5.md)
