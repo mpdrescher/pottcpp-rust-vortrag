@@ -44,3 +44,5 @@ error[E0425]: cannot find value `ein_string` in this scope
 
 error: aborting due to previous error
 ```
+
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/slides/ownership/ownership2.md)
