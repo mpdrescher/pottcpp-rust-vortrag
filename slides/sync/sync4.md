@@ -1,9 +1,7 @@
 # Ownership in Sync-Strukturen:
 
 ### Lösung:
-Das Keyword move vor Closures erzwingt, 
-dass das Objekt der Closure zugerodnet 
-wird.
+Das keyword ´move´ vor closures erzwingt, dass das Objekt der closure zugerodnet wird.
 
 ### Neues Beispiel:
 ```Rust
@@ -33,4 +31,5 @@ error[E0382]: capture of moved value: `arc_vec`
    = note: move occurs because `arc_vec` has type `std::sync::Arc<std::vec::Vec<i64>>`, which does not implement the `Copy` trait  
 ```
 (Hatten wir schon, ist aber ein Beispiel dafür, dass primitive Typen Copy meistens implementieren.)
+
 [weiter](https://github.com/PhilippRo/pottcpp-rust-vortrag/blob/master/slides/sync/sync5.md)
