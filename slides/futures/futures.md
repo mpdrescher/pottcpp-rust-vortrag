@@ -6,9 +6,8 @@
  * Muster zur Synchronisation
 
 ### Wo kommen Futures her:
- * Aus Cargo (futures create)
- * Ist das Hetzstück von Tokio
- * Tokio ist ein Crate für asynchrones IO
-
+ * Aus Cargo (futures crate)
+ * Ist das Herzstück von Tokio
+ * Tokio ist eine crate für asynchrones IO
 
 [Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/futures/futures1.md)
