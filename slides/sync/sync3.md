@@ -1,7 +1,7 @@
 # Ownership in Sync-Strukturen:
 
 ### Problem:
-Die Sync-Strukturen schränken Funktionsumpfang ein.
+Die Sync-Strukturen schränken den Funktionsumfang ein.
 
 ### Beispiel:
 ```Rust
@@ -33,4 +33,5 @@ help: to force the closure to take ownership of `arc_vec` (and any other referen
 13 |         thread::spawn(move ||{                                                                                                                                                                                                           
    |           
 ```
+
 [weiter](https://github.com/PhilippRo/pottcpp-rust-vortrag/blob/master/slides/sync/sync4.md)
