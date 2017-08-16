@@ -3,11 +3,11 @@
 ### Arc:
  * Atomic Reference Counter
  * Teilt unveränderbare Referenzen über Threads
- * Löst Ownership intern mithilfe von ````Rust unsafe ``` Blöcken
+ * Löst Ownership intern mithilfe von Rust `unsafe` Blöcken
 
 ### Mutex:
  * MUTable EXlusive access
- * stellt einen Container zu Verfügung, der sichere veränderbare Referenzen zurückgibt
+ * Stellt einen Container zur Verfügung, der sichere, veränderbare Referenzen zurückgibt
  * Gibt MutexGuard zurück, der sich wie ein lock_guard verhält
 
 ### mpsc-Channels:
