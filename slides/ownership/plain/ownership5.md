@@ -50,4 +50,4 @@ fn main() {
 Das heisst auch, dass es nicht möglich ist ein Objekt out-of-scope gehen zu lassen,
 auf welches noch Referenzen zeigen.
 
-[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/ownership6.md)
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/plain/ownership6.md)

@@ -5,4 +5,4 @@
 - Memory leaks
 - Thread safety
 
-[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/ownership7.md)
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/plain/ownership7.md)

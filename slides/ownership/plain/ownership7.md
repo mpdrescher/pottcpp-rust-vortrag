@@ -28,4 +28,4 @@ fn skip_prefix<'a, 'b>(line: &'a str, prefix: &'b str) -> &'a str {
 
 Lifetimes __*beschreiben*__ wie lange ein Objekt (owned/referenz) lebt.
 
-[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/ownership8.md)
+[Weiter](https://github.com/mpdrescher/pottcpp-rust-vortrag/blob/master/slides/ownership/plain/ownership8.md)
