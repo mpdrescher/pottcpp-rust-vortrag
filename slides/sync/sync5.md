@@ -2,7 +2,7 @@
 # Ownership in Sync-Strukturen:
 
 ### Lösung:
-Lokale Copy des Arcs.
+Lokale Kopie des Arcs.
 
 ### Neues Beispiel:
 ```Rust
@@ -30,4 +30,5 @@ error[E0507]: cannot move out of borrowed content
                                                                                                                                                                                                                                               
 error: aborting due to previous error 
 ```
+
 [weiter](https://github.com/PhilippRo/pottcpp-rust-vortrag/blob/master/slides/sync/sync6.md)
