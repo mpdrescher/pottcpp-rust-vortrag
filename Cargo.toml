@@ -1,38 +1,15 @@
 [package]
+authors = ["Matthias Drescher <matthias_p_drescher@t-online.de>"]
 name = "cppvortrag"
 version = "0.1.0"
-authors = ["Matthias Drescher <matthias_p_drescher@t-online.de>"]
+
+[dependencies]
+futures = "0.1"
+futures-cpupool = "0.1"
+rand = "*"
+rayon = "0.8.2"
+tokio-timer = "0.1"
 
 [lib]
 name = "testdata"
 path = "src/testdata.rs"
-
-[[bin]]
-name = "map"
-path = "src/map.rs"
-
-[[bin]]
-name = "pmap1"
-path = "src/pmap1.rs"
-
-[[bin]]
-name = "pmap2"
-path = "src/pmap2.rs"
-
-[[bin]]
-name = "pmap3"
-path = "src/pmap3.rs"
-
-[[bin]]
-name = "pmap4"
-path = "src/pmap4.rs"
-
-[[bin]]
-name = "pmap5"
-path = "src/pmap5.rs"
-
-[dependencies]
-rand = "*"
-futures = "0.1"
-futures-cpupool = "0.1"
-tokio-timer = "0.1"
