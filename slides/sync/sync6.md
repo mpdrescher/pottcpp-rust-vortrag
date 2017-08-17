@@ -39,4 +39,8 @@ fn main() {
     ```
         Implementiert `Send` für den Vec nur wenn auch die Elemente von Vec `Send` implementieren
  * Send ist ein Marker (Keine Methoden, muss aber explizit implemetiert werden)
- * Das tolle: Das Typesystem kann festellen, ob man Sachen in einen Thread steckt, die nicht reingehören.
+ * Das Tolle: Das Typesystem kann festellen, ob man Sachen in einen Thread steckt, die nicht reingehören.
+
+### 2 wichtige Traits:
+ * Sync (Struktur kann Referenzen über mehrere Threads teilen)
+ * Send (Struktur kann zwischen Threads gemoved werdern) 
